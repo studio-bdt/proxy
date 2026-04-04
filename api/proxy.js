@@ -14,15 +14,6 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Invalid URL' });
   }
 
-  if (parsedUrl.protocol !== 'https:') {
-    return res.status(403).json({ error: 'Only HTTPS allowed' });
-  }
-
-  const blockedPatterns = ['localhost', '127.', '192.168.', '0.0.0.0'];
-  if (blockedPatterns.some(p => parsedUrl.hostname.includes(p))) {
-    return res.status(403).json({ error: 'Internal addresses not allowed' });
-  }
-
   try {
     const response = await fetch(targetUrl, {
       method: req.method,
