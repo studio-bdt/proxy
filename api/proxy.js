@@ -33,7 +33,14 @@ export default async function handler(req, res) {
     });
 
     const data = await response.text();
-    res.status(response.status).send(data);
+
+    const baseUrl = new URL(targetUrl).origin;
+    const rewrittenHtml = data
+      .replace(/href="\//g, `href="/api/proxy?url=${baseUrl}/`)
+      .replace(/src="\//g, `src="/api/proxy?url=${baseUrl}/`);
+
+    res.status(response.status).send(rewrittenHtml);
+
   } catch (err) {
     res.status(500).json({ error: 'Proxy error', detail: err.message });
   }

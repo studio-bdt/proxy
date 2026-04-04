@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BDT asdf</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BDT asdf</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>web proxy</h1>
 
-    <p>Built by <a href="https://github.com/studio-bdt">Studio BDT</a></p>
-
+  <div id="toolbar">
     <input type="text" id="urlInput" placeholder="enter a url" />
-    <button onclick="fetchUrl()">submit</button>
+    <button onclick="fetchUrl()">go</button>
+  </div>
 
-    <div id="error"></div>
-    <div id="result"></div>
+  <div id="error"></div>
 
-    <script src="script.js"></script>
-    
+  <div id="frameWrapper">
+    <div id="placeholder">enter a url above to get started</div>
+    <div id="loading">loading...</div>
+    <iframe id="siteFrame"></iframe>
+  </div>
+
+  <script src="script.js"></script>
+
 </body>
 </html>
