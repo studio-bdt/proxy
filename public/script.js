@@ -15,7 +15,13 @@ function openUrl() {
   }
 
   const proxyUrl = `/api/proxy?url=${encodeURIComponent(fullUrl)}`;
-  window.open(proxyUrl, '_blank');
+  const link = document.createElement('a');
+  link.href = proxyUrl;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
 document.getElementById('urlInput').addEventListener('keydown', (e) => {
